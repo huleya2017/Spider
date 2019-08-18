@@ -15,7 +15,7 @@ def parsePage(iList,html):
         plt=re.findall(r'\"view_price\"\:\"[\d\.]*\"',html)
         tlt = re.findall(r'\"raw_title\"\:\".*?\"', html)
         for i in range(len(plt)):
-            price=eval(plt[i].split(':')[1])
+            price=eval(plt[i].split(':')[1]) # eval()函数简单说就是用于去掉字符串的引号
             title=eval(tlt[i].split(':')[1])
             iList.append([price,title])
     except:
@@ -32,7 +32,7 @@ def printGoodList(iList):
 
 def main():
     goods="书包"
-    depth=2
+    depth=2 #爬取深度
     start_url='https://s.taobao.com/search?q='+goods
     inforList=[]
     for i in range(depth):
